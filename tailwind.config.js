@@ -11,7 +11,8 @@ module.exports = {
       colors:{
         'new-white': '#fffafa',
         'new-black': '#343434',
-        'new-purple': 'hsl(243, 90%, 64%)'
+        'new-purple': 'hsl(243, 90%, 64%)',
+        'new-bg': 'hsl(220, 5%, 90%)'
       },
       height: {
 				inherit: 'inherit',

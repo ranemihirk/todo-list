@@ -1,0 +1,31 @@
+
+.project-menu, .task-list{
+    scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+/* width */
+.project-menu::-webkit-scrollbar, .task-list::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Project Menu Track */
+  .project-menu::-webkit-scrollbar-track {
+    background: hsl(220, 5%, 90%); 
+  }
+   
+  /* Project Menu Handle */
+  .project-menu::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 12px;
+  }
+  
+  /* Task List Track */
+  .task-list::-webkit-scrollbar-track {
+    background: #fffafa; 
+  }
+   
+  /* Task List Handle */
+  .task-list::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 12px;
+  }
