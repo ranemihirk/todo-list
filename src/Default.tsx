@@ -14,6 +14,8 @@ import {
   faMagnifyingGlass,
   faBell,
   faUserTie,
+  faEllipsisVertical,
+  faClock,
 } from "@fortawesome/free-solid-svg-icons";
 
 const mainMenu = [
@@ -46,9 +48,8 @@ const projects = [
 
 export default function Default() {
   return (
-    <div className="flex flex-wrap h-screen max-h-screen overflow-hidden">
-      <div className="w-2/12 max-h-screen py-5 px-5 bg-new-bg border border-gray-300 grid grid-cols-1 content-between">
-
+    <div className="flex h-screen max-h-screen max-w-screen overflow-hidden">
+      <div className="sidebar w-2/12 max-h-screen py-5 px-5 bg-new-bg border border-gray-300 grid grid-cols-1 content-between">
         {/* Profile tab */}
         <div className="flex items-center mb-4 p-1 rounded-md bg-new-white cursor-pointer">
           <div className="flex items-center w-4/5">
@@ -95,8 +96,7 @@ export default function Default() {
         </button>
       </div>
 
-      <div className="grow py-5 px-5 bg-new-white h-screen">
-
+      <div className="task grow py-5 px-5 bg-new-white h-screen">
         {/* Project Title */}
         <div className="flex flex-wrap h-1/5">
           <div className="w-4/6">
@@ -114,13 +114,13 @@ export default function Default() {
             </div>
           </div>
           <div className="w-2/6 flex items-start justify-evenly">
-            <div className="bg-new-bg rounded-full px-4 py-2">
+            <div className="bg-new-bg rounded-full px-4 py-2 cursor-pointer">
               <FontAwesomeIcon icon={faMagnifyingGlass} size="sm" />
             </div>
-            <div className="bg-new-bg rounded-full px-4 py-2">
+            <div className="bg-new-bg rounded-full px-4 py-2 cursor-pointer">
               <FontAwesomeIcon icon={faBell} size="sm" />
             </div>
-            <div className="bg-new-bg rounded-full px-4 py-2">
+            <div className="bg-new-bg rounded-full px-4 py-2 cursor-pointer">
               <FontAwesomeIcon icon={faUserTie} size="sm" />
             </div>
           </div>
@@ -128,8 +128,7 @@ export default function Default() {
 
         {/* Task List */}
         <div className="task-list flex justify-evenly h-4/5 overflow-hidden overflow-y-scroll">
-
-			{/* To Do */}
+          {/* To Do */}
           <div className="w-3/12 max-w-3/12">
             <h5 className="flex justify-between bg-new-bg px-3 py-2 w-full font-semibold mb-5 rounded">
               To Do{" "}
@@ -138,11 +137,51 @@ export default function Default() {
               </span>
             </h5>
             {Array.from({ length: 3 }).map((it, index) => (
-              <div className="shadow-md aspect-square mb-5">{index}</div>
+              <div className="task-item shadow-md mb-5 p-4 cursor-pointer rounded-lg hover:bg-gray-200">
+                <div className="task-header flex justify-between">
+                  <h3 className=""></h3>
+                  <div className="task-option rounded-md px-4 py-2 hover:bg-gray-300">
+                    <FontAwesomeIcon icon={faEllipsisVertical} size="sm" />
+                  </div>
+                </div>
+                <div className="task-body mb-4">
+                  <h3>
+                    Create Prototype Mobile for Get Notification in Principle.
+                  </h3>
+                </div>
+                <div className="task-footer flex justify-between items-center">
+                  <div className="badge badge-success gap-2 text-sm">
+                    <FontAwesomeIcon icon={faClock} size="sm" />
+                    Mar 23
+                  </div>
+                  <div className="avatar-group -space-x-6">
+                    <div className="avatar placeholder">
+                      <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+                        <span className="text-xs">AA</span>
+                      </div>
+                    </div>
+                    <div className="avatar placeholder">
+                      <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+                        <span className="text-xs">AA</span>
+                      </div>
+                    </div>
+                    <div className="avatar placeholder">
+                      <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+                        <span className="text-xs">AA</span>
+                      </div>
+                    </div>
+                    <div className="avatar placeholder">
+                      <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+                        <span className="text-xs">AA</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
 
-		  {/* In Progress */}
+          {/* In Progress */}
           <div className="w-3/12 max-w-3/12">
             <h5 className="flex justify-between bg-new-bg px-3 py-2 w-full font-semibold mb-5 rounded">
               In Progress{" "}
@@ -151,27 +190,86 @@ export default function Default() {
               </span>
             </h5>
             {Array.from({ length: 2 }).map((it, index) => (
-              <div className="shadow-md aspect-square mb-5">{index}</div>
+              <div className="task-item shadow-md mb-5 p-4 cursor-pointer rounded-lg hover:bg-gray-200">
+			  <div className="task-header flex justify-between">
+				<h3 className=""></h3>
+				<div className="task-option rounded-md px-4 py-2 hover:bg-gray-300">
+				  <FontAwesomeIcon icon={faEllipsisVertical} size="sm" />
+				</div>
+			  </div>
+			  <div className="task-body mb-4">
+				<h3>
+				  Create Prototype Mobile for Get Notification in Principle.
+				</h3>
+			  </div>
+			  <div className="task-footer flex justify-between items-center">
+				<div className="badge badge-warning gap-2 text-sm">
+				  <FontAwesomeIcon icon={faClock} size="sm" />
+				  Mar 23
+				</div>
+				<div className="avatar-group -space-x-6">
+				  <div className="avatar placeholder">
+					<div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+					  <span className="text-xs">AA</span>
+					</div>
+				  </div>
+				  <div className="avatar placeholder">
+					<div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+					  <span className="text-xs">AA</span>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
             ))}
           </div>
-		  
-		  {/* Complete */}
-		  <div className="w-3/12 max-w-3/12">
+
+          {/* Complete */}
+          <div className="w-3/12 max-w-3/12">
             <h5 className="flex justify-between bg-new-bg px-3 py-2 w-full font-semibold mb-5 rounded">
-			Complete{" "}
+              Complete{" "}
               <span className="bg-new-black text-new-white rounded px-2 font-normal">
-                2
+                1
               </span>
             </h5>
-            {Array.from({ length: 2 }).map((it, index) => (
-              <div className="shadow-md aspect-square mb-5">{index}</div>
+            {Array.from({ length: 1 }).map((it, index) => (
+              <div className="task-item shadow-md mb-5 p-4 cursor-pointer rounded-lg hover:bg-gray-200">
+			  <div className="task-header flex justify-between">
+				<h3 className=""></h3>
+				<div className="task-option rounded-md px-4 py-2 hover:bg-gray-300">
+				  <FontAwesomeIcon icon={faEllipsisVertical} size="sm" />
+				</div>
+			  </div>
+			  <div className="task-body mb-4">
+				<h3>
+				  Create Prototype Mobile for Get Notification in Principle.
+				</h3>
+			  </div>
+			  <div className="task-footer flex justify-between items-center">
+				<div className="badge badge-warning gap-2 text-sm">
+				  <FontAwesomeIcon icon={faClock} size="sm" />
+				  Mar 23
+				</div>
+				<div className="avatar-group -space-x-6">
+				  <div className="avatar placeholder">
+					<div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+					  <span className="text-xs">AA</span>
+					</div>
+				  </div>
+				  <div className="avatar placeholder">
+					<div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+					  <span className="text-xs">AA</span>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
             ))}
           </div>
         </div>
-		
       </div>
 
-      <div className="w-3/12 py-5 px-5 bg-new-white border border-gray-300">
+      <div className="chatroom w-3/12 py-5 px-5 bg-new-white border border-gray-300">
         ChatRoom
       </div>
     </div>

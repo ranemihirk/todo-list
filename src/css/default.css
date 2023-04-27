@@ -29,3 +29,11 @@
     background: #888; 
     border-radius: 12px;
   }
+
+  .task-option{
+    opacity: 0;
+  }
+
+  .task-item:hover .task-option{
+    opacity: 1;
+  }
