@@ -1,10 +1,10 @@
 
-.project-menu, .task-list{
+.project-menu, .task-list, .chatbox {
     scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
 }
 /* width */
-.project-menu::-webkit-scrollbar, .task-list::-webkit-scrollbar {
+.project-menu::-webkit-scrollbar, .task-list::-webkit-scrollbar, .chatbox::-webkit-scrollbar {
     width: 10px;
   }
   
@@ -37,3 +37,15 @@
   .task-item:hover .task-option{
     opacity: 1;
   }
+
+   /* chatbox Track */
+   .chatbox::-webkit-scrollbar-track {
+    background: #fffafa; 
+  }
+   
+  /* chatbox Handle */
+  .chatbox::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 12px;
+  }
+
