@@ -1,8 +1,11 @@
 {
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mui/material": "^5.13.1",
     "@types/node": "^16.18.19",
     "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",
