@@ -73,13 +73,17 @@ export default function Sidebar({ SiteLogo }: AppBodyProps): JSX.Element {
     };
 
   return (
-    <div className="sidebar hidden w-3/12 max-h-screen py-5 px-5 bg-new-bg border border-gray-300 lg:grid grid-cols-1 content-between">
+    <div className="sidebar hidden w-5/12 max-h-screen py-5 px-5 bg-new-bg border border-gray-300 lg:grid grid-cols-1 content-between">
       <Popper
         open={open}
         anchorEl={anchorEl}
         placement={placement}
         transition
-        className={`${popperElement == "workplace" ? 'task-list h-[50vh] overflow-hidden overflow-y-scroll' : ''} ml-2`}
+        className={`${
+          popperElement == "workplace"
+            ? "task-list h-[50vh] overflow-hidden overflow-y-scroll"
+            : ""
+        } ml-2`}
       >
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
@@ -101,7 +105,11 @@ export default function Sidebar({ SiteLogo }: AppBodyProps): JSX.Element {
                 </ul>
               ) : (
                 <div className="p-4">
-                  <input type="text" placeholder="Project Name..." className="input input-bordered w-full max-w-xs mb-2" />
+                  <input
+                    type="text"
+                    placeholder="Project Name..."
+                    className="input input-bordered w-full max-w-xs mb-2"
+                  />
                   <button className="btn w-full">Add</button>
                 </div>
               )}
