@@ -6,25 +6,12 @@ import "./css/default.css";
 import Sidebar from "./component/desktop/Sidebar";
 import MainBody from "./component/desktop/MainBody";
 import ChatBox from "./component/desktop/ChatBox";
-import MobileSidebar from "./component/mobile/MobileSidebar";
-import MobileMainBody from "./component/mobile/MobileMainBody";
-import MobileChatBox from "./component/mobile/MobileChatBox";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faXmark,
-  faEllipsis,
-  faCaretDown,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import Popup from "./component/popupModal";
 
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
+import { todoTasks, inProgressTasks, completeTasks } from "./data";
 
 type TaskDataProps = {
   id: string | null;
@@ -36,7 +23,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  height: "80vh",
+  height: "auto",
   width: "80vw",
   bgcolor: "background.paper",
   boxShadow: 24,
@@ -53,36 +40,63 @@ export default function Layout() {
   const [task, setTask] = React.useState<TaskDataProps>({ id: "1", type: "" });
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  let currentTask = {};
+  let currentTask = {
+    id: 1,
+    title:
+      "[Memo] - Create Prototype Mobile for Get Notification in Principle.",
+    description: "",
+    assigned: {
+      name: "Mihir Rane",
+      initial: "MR",
+    },
+    reporter: {
+      name: "Mihir Rane",
+      initial: "MR",
+    },
+    status: "warning",
+    estimatedTime: "Mar 23",
+    createdAt: "",
+    updatedAt: "",
+  };
+
+  const [currTask, setCurrTask] = React.useState(currentTask);
 
   useEffect(() => {
-    console.log("task: ", task);
-    console.log('task["type"] =="todo": ', task["type"] == "todo");
-    // if (!task && Object.keys(task).length > 0) {
-    // setTotalUsers(data.rooms.paginatorInfo.total);
     let taskStatus = false;
-
+    console.log("task: ", task);
     if (task["type"] == "todo") {
       setOpen(true);
       taskStatus = true;
+      todoTasks.map((item) => {
+		console.log('item.id == Number(task.id): ', item.id == Number(task.id));
+        if (item.id == Number(task.id)) {
+			setCurrTask(item);
+        }
+      });
     }
     if (task["type"] == "progress") {
       setOpen(true);
       taskStatus = true;
+      inProgressTasks.map((item) => {
+		console.log('item.id == Number(task.id): ', item.id == Number(task.id));
+        if (item.id == Number(task.id)) {
+			setCurrTask(item);
+        }
+      });
     }
     if (task["type"] == "complete") {
       setOpen(true);
       taskStatus = true;
+      completeTasks.map((item) => {
+		console.log('item.id == Number(task.id): ', item.id == Number(task.id));
+        if (item.id == Number(task.id)) {
+			setCurrTask(item);
+        }
+      });
     }
     // }
+	console.log('currentTask: ', currentTask);
   }, [task]);
-
-  const [expanded, setExpanded] = React.useState<string | false>("panel1");
-
-  const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-      setExpanded(newExpanded ? panel : false);
-    };
 
   return (
     <div className={`layout ${!isLargeScreen && "drawer"}`}>
@@ -93,105 +107,7 @@ export default function Layout() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="flex justify-between">
-            <div></div>
-            <div>
-              <button className="ml-4">
-                <FontAwesomeIcon icon={faEllipsis} size="xl" />
-              </button>
-              <button className="ml-4">
-                <FontAwesomeIcon icon={faXmark} size="xl" />
-              </button>
-            </div>
-          </div>
-          <div className="flex">
-            <div className="w-[65%] min-w-[65%] max-w-[65%] p-4">
-              <textarea
-                className="textarea textarea-ghost w-full text-3xl font-medium px-0"
-                placeholder="Add a description..."
-              >
-                [Memo] - Create Prototype Mobile for Get Notification in
-                Principle.
-              </textarea>
-              <h4 className="font-bold mt-6">Description</h4>
-              <textarea
-                className="textarea textarea-ghost w-full"
-                placeholder="Add a description..."
-              ></textarea>
-            </div>
-            <div className="w-[35%] min-w-[35%] max-w-[35%] p-4">
-              <div>
-                <select className="select select-ghost focus:outline-none">
-                  <option disabled selected>
-                    Select status
-                  </option>
-                  <option value="warning">Warning</option>
-                  <option value="success">success</option>
-                </select>
-                <select className="select select-ghost focus:outline-none">
-                  <option disabled selected>
-                    Select task type
-                  </option>
-                  <option>To Do</option>
-                  <option>In Progress</option>
-                  <option>Complete</option>
-                </select>
-              </div>
-              <div>
-                <Accordion
-                  expanded={expanded === "panel1"}
-                  onChange={handleChange("panel1")}
-                >
-                  <AccordionSummary
-                    expandIcon={
-                      <FontAwesomeIcon icon={faCaretDown} size="lg" />
-                    }
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                    className="border-1 border-gray-800"
-                  >
-                    <Typography>Details</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails className="border-1 border-gray-800">
-                    <div className="grid grid-cols-3 gap-4">
-                      {/* {new Array(10).fill(0).map((row, idx) => {
-                        return (
-                          <div
-                            key={idx}
-                            className={`${idx % 2 != 0 && "col-span-2"}`}
-                          >
-                            {idx}
-                          </div>
-                        );
-                      })} */}
-                      <div className="flex items-center">
-                        <h4>Assignee</h4>
-                      </div>
-                      <div className="col-span-2 items-center">
-                        <select className="select select-ghost focus:outline-none">
-                          <option selected><FontAwesomeIcon icon={faUser} size="xl" className="mr-3" />Unassigned</option>
-                          <option>Mihir Rane</option>
-                          <option>Brian Thomas</option>
-                          <option>Francee</option>
-                        </select>
-                      </div>
-                      <div className="flex items-center">
-                        <h4>Assignee</h4>
-                      </div>
-					  <div className="col-span-2 items-center">
-                        <select className="select select-ghost focus:outline-none">
-                          <option selected>Unassigned</option>
-                          <option>Mihir Rane</option>
-                          <option>Brian Thomas</option>
-                          <option>Francee</option>
-                        </select>
-                      </div>
-                    </div>
-                  </AccordionDetails>
-                </Accordion>
-              </div>
-            </div>
-          </div>
+          <Popup newTask={currTask} open={open} />
         </Box>
       </Modal>
 

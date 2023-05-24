@@ -90,8 +90,8 @@ export default function Sidebar({ SiteLogo }: AppBodyProps): JSX.Element {
             <Paper>
               {popperElement == "workplace" ? (
                 <ul className="menu bg-base-100 w-56">
-                  {projects.map((item) => (
-                    <li>
+                  {projects.map((item, idx) => (
+                    <li key={idx}>
                       <a>
                         <img
                           src={siteLogo}
@@ -178,8 +178,8 @@ export default function Sidebar({ SiteLogo }: AppBodyProps): JSX.Element {
 const workplaceElement = (): JSX.Element => {
   return (
     <ul className="menu bg-base-100 w-56">
-      {projects.map((item) => (
-        <li>
+      {projects.map((item, idx) => (
+        <li key={idx}>
           <a>
             <img
               src={siteLogo}

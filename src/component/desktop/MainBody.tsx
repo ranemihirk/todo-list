@@ -202,14 +202,12 @@ export default function MainBody({
                   <FontAwesomeIcon icon={faClock} size="sm" />
                   {item.estimatedTime}
                 </div>
-                <div className={`avatar-group -space-x-6`}>
-                  {item.assigned.map((current) => (
+                <div className={`avatar-group -space-x-6 ${item.assigned.initial == "" && "hidden"}`}>
                     <div className="avatar placeholder">
                       <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-                        <span className="text-xs">{current.initial}</span>
+                        <span className="text-xs">{item.assigned.initial}</span>
                       </div>
                     </div>
-                  ))}
                 </div>
               </div>
             </button>
@@ -293,14 +291,12 @@ export default function MainBody({
                   <FontAwesomeIcon icon={faClock} size="sm" />
                   {item.estimatedTime}
                 </div>
-                <div className="avatar-group -space-x-6">
-                  {item.assigned.map((current) => (
+                <div className={`avatar-group -space-x-6 ${item.assigned.initial == "" && "hidden"}`}>
                     <div className="avatar placeholder">
                       <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-                        <span className="text-xs">{current.initial}</span>
+                        <span className="text-xs">{item.assigned.initial}</span>
                       </div>
                     </div>
-                  ))}
                 </div>
               </div>
             </button>
@@ -384,14 +380,12 @@ export default function MainBody({
                   <FontAwesomeIcon icon={faClock} size="sm" />
                   {item.estimatedTime}
                 </div>
-                <div className="avatar-group -space-x-6">
-                  {item.assigned.map((current) => (
+                <div className={`avatar-group -space-x-6 ${item.assigned.initial == "" && "hidden"}`}>
                     <div className="avatar placeholder">
                       <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-                        <span className="text-xs">{current.initial}</span>
+                        <span className="text-xs">{item.assigned.initial}</span>
                       </div>
                     </div>
-                  ))}
                 </div>
               </div>
             </button>
